@@ -31,7 +31,7 @@ import { useState, useEffect, Suspense } from 'react';
           
         <div className="m-5 p-3  flex flex-col bg-zinc-950  rounded-md"  >
         <h1>{data.title}</h1>
-        <Image src={data.image_url} alt="image"/>
+        <img src={data.image_url} alt="image"/>
         <p>{data.description}</p>
         
         <u><Link href={data.link} target="_blank">Click here</Link></u>
