@@ -24,20 +24,16 @@ import { useState, useEffect, Suspense } from 'react';
   return (
    
     <>
-      <h1>hiii</h1>
       
       {data && (
-        <div className="grid md:grid-cols-4 grid-cols-2 p-3 w-full">
           
         <div className="m-5 p-3  flex flex-col bg-zinc-950  rounded-md"  >
-        <h1>{data.title}</h1>
+        <h1 className='w-[90vw]'>{data.title}</h1>
         <img src={data.image_url} alt="image"/>
-        <p>{data.description}</p>
+        <p className='w-[80vw]'>{data.description}</p>
         
         <u><Link href={data.link} target="_blank">Click here</Link></u>
     </div>
-    
-        </div>
        
       )}
       
