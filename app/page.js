@@ -25,7 +25,7 @@ top articles
 {data.length > 0 && (
         <div className="grid md:grid-cols-4 grid-cols-2 p-3">
           {data.map((item) => (
-            <Tile p={item} /> 
+            <Tile key={item.article_id} p={item} /> 
           ))}
         </div>
       )}

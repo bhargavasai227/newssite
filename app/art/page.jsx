@@ -1,10 +1,10 @@
 "use client";
+import Image from 'next/image';
 import axios from 'axios';
 import { useSearchParams } from 'next/navigation';
 import Link from 'next/link';
-import { useState, useEffect } from 'react';
-
-export default function Home() {
+import { useState, useEffect, Suspense } from 'react';
+ function Ho() {
   const [data, setData] = useState();
   const searchParams = useSearchParams()
  
@@ -22,21 +22,34 @@ export default function Home() {
   }, []); 
 
   return (
+   
     <>
       <h1>hiii</h1>
+      
       {data && (
         <div className="grid md:grid-cols-4 grid-cols-2 p-3 w-full">
           
         <div className="m-5 p-3  flex flex-col bg-zinc-950  rounded-md"  >
         <h1>{data.title}</h1>
-        <img src={data.image_url} alt="image"/>
+        <Image src={data.image_url} alt="image"/>
         <p>{data.description}</p>
         
         <u><Link href={data.link} target="_blank">Click here</Link></u>
     </div>
     
         </div>
+       
       )}
+      
     </>
+    
   );
 }
+export default function Home(){
+    return(
+        <Suspense  fallback={<div>Loading...</div>}>
+        <Ho/>
+        </Suspense>
+    )
+}
+ 

@@ -2,9 +2,9 @@
 import axios from 'axios';
 import { useSearchParams } from 'next/navigation';
 import Tile from "../components/Tile";
-import { useState, useEffect } from 'react';
+import { useState, useEffect,Suspense } from 'react';
 
-export default function Home() {
+function Ho() {
   const [data, setData] = useState([]);
   const searchParams = useSearchParams()
  
@@ -25,12 +25,21 @@ export default function Home() {
     <>
       <h1>category:{search}</h1>
       {data.length > 0 && (
+        
         <div className="grid md:grid-cols-4 grid-cols-2 p-3">
           {data.map((item) => (
-            <Tile p={item} /> // Assuming `item.id` is the unique key
+            <Tile p={item} key={item.article_id} /> 
           ))}
         </div>
+        
       )}
     </>
   );
+}
+export default function Home() {
+return(
+  <Suspense fallback={<div>loading...</div>}>
+    <Ho/>
+  </Suspense>
+)
 }
