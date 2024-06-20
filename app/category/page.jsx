@@ -1,5 +1,6 @@
 "use client";
 import axios from 'axios';
+import { Loading } from '../components/Loading';
 import { useSearchParams } from 'next/navigation';
 import Tile from "../components/Tile";
 import { useState, useEffect,Suspense } from 'react';
@@ -38,7 +39,7 @@ function Ho() {
 }
 export default function Home() {
 return(
-  <Suspense fallback={<div>loading...</div>}>
+  <Suspense fallback={<Loading/>}>
     <Ho/>
   </Suspense>
 )

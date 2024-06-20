@@ -1,5 +1,5 @@
 "use client";
-import Image from 'next/image';
+import { Loading } from '../components/Loading';
 import axios from 'axios';
 import { useSearchParams } from 'next/navigation';
 import Link from 'next/link';
@@ -9,7 +9,7 @@ import { useState, useEffect, Suspense } from 'react';
   const searchParams = useSearchParams()
  
   const id = searchParams.get('id')
-  const url=`https://newsdata.io/api/1/latest?apikey=pub_46749144a28cc2daca769aec4518b6613452f&id=${id}`
+  const url=`https://newsdata.io/api/1/latest?apikey=pub_46749144a28cc2daca769aec4518b6613452f&qInTitle=${id}`
   useEffect(() => {
     axios.get(url)
       .then(response => {
@@ -43,7 +43,7 @@ import { useState, useEffect, Suspense } from 'react';
 }
 export default function Home(){
     return(
-        <Suspense  fallback={<div>Loading...</div>}>
+        <Suspense  fallback={<div><Loading/></div>}>
         <Ho/>
         </Suspense>
     )
