@@ -1,4 +1,5 @@
 "use client";
+import Image from 'next/image';
 import { Loading } from '../components/Loading';
 import axios from 'axios';
 import { useSearchParams } from 'next/navigation';
@@ -9,11 +10,11 @@ import { useState, useEffect, Suspense } from 'react';
   const searchParams = useSearchParams()
  
   const id = searchParams.get('id')
-  const url=`https://newsdata.io/api/1/latest?apikey=pub_46749144a28cc2daca769aec4518b6613452f&qInTitle=${id}`
+  const url=`https://newsapi.org/v2/everything?q=McDonalds&apiKey=9f9d0c6cb6a14e4784ade75dab7e45f5`
   useEffect(() => {
     axios.get(url)
       .then(response => {
-        setData(response.data.results[0]); 
+        setData(response.data.articles[0]); 
         console.log(response.data);
       })
       .catch(error => {
@@ -27,12 +28,17 @@ import { useState, useEffect, Suspense } from 'react';
       
       {data && (
           
-        <div className="m-5 p-3  flex flex-col bg-zinc-950  rounded-md"  >
+        <div className="m-5 p-3  flex flex-col bg-zinc-950  rounded-md items-start"  >
         <h1 className='w-[90vw]'>{data.title}</h1>
-        <img src={data.image_url} alt="image"/>
+
+        <Image width={400} height={400} className="h-[50vh] w-[75vw] object-contain" src={data.urlToImage} alt="image"/>
+
+        <i><h1>Description :</h1></i>
         <p className='w-[80vw]'>{data.description}</p>
+        <i><h1>Content :</h1></i>
         
-        <u><Link href={data.link} target="_blank">Click here</Link></u>
+        <p>{data.content}</p>
+        <u><Link href={data.url} target="_blank">Click here</Link></u>
     </div>
        
       )}

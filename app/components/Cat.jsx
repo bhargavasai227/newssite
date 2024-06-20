@@ -1,7 +1,7 @@
 import Link from 'next/link';
 
 export default function Cat() {
-    const cat = ["sports", "business", "science","entertainment","food","environment"];
+    const cat = ["business", "entertainment", "general", "health", "science", "sports", "technology"];
     return (
         <div className="p-2">
             category

@@ -8,11 +8,12 @@ import { Loading } from "./components/Loading";
 export default function Home() {
   const [data, setData] = useState([]);
 
-  const url=`https://newsdata.io/api/1/latest?apikey=pub_46749144a28cc2daca769aec4518b6613452f&language=en`
+  const url=`https://newsapi.org/v2/top-headlines?sources=bbc-news&apiKey=9f9d0c6cb6a14e4784ade75dab7e45f5`
   useEffect(() => {
     axios.get(url)
       .then(response => {
-        setData(response.data.results); 
+        setData(response.data.articles); 
+        console.log(response.data);
         
       })
       .catch(error => {
